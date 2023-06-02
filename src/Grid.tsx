@@ -62,6 +62,15 @@ const columnDefs: ColDef[] = [
     field: 'pha',
     headerName: 'Potentially Hazardous',
     filter: 'agTextColumnFilter',
+    valueFormatter: (params) => {
+      if (params.value === 'Y') {
+        return 'Yes';
+      } else if (params.value === 'N') {
+        return 'No';
+      } else {
+        return '';
+      }
+    },
   },
   {
     field: 'orbit_class',
