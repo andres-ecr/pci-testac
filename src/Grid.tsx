@@ -5,16 +5,63 @@ import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
 
 const columnDefs: ColDef[] = [
-  { field: 'designation', headerName: 'Designation' },
-  { field: 'discovery_date', headerName: 'Discovery Date' },
-  { field: 'h_mag', headerName: 'H (mag)' },
-  { field: 'moid_au', headerName: 'MOID (au)' },
-  { field: 'q_au_1', headerName: 'q (au)' },
-  { field: 'q_au_2', headerName: 'Q (au)' },
-  { field: 'period_yr', headerName: 'Period (yr)' },
-  { field: 'i_deg', headerName: 'Inclination (deg)' },
-  { field: 'pha', headerName: 'Potentially Hazardous' },
-  { field: 'orbit_class', headerName: 'Orbit Class', enableRowGroup: true },
+  {
+    field: 'designation',
+    headerName: 'Designation',
+    filter: 'agTextColumnFilter',
+  },
+  {
+    field: 'discovery_date',
+    headerName: 'Discovery Date',
+    filter: 'agDateColumnFilter',
+  },
+  {
+    field: 'h_mag',
+    headerName: 'H (mag)',
+    valueParser: (params) => Number(params.newValue),
+    filter: 'agNumberColumnFilter',
+  },
+  {
+    field: 'moid_au',
+    headerName: 'MOID (au)',
+    valueParser: (params) => Number(params.newValue),
+    filter: 'agNumberColumnFilter',
+  },
+  {
+    field: 'q_au_1',
+    headerName: 'q (au)',
+    valueParser: (params) => Number(params.newValue),
+    filter: 'agNumberColumnFilter',
+  },
+  {
+    field: 'q_au_2',
+    headerName: 'Q (au)',
+    valueParser: (params) => Number(params.newValue),
+    filter: 'agNumberColumnFilter',
+  },
+  {
+    field: 'period_yr',
+    headerName: 'Period (yr)',
+    valueParser: (params) => Number(params.newValue),
+    filter: 'agNumberColumnFilter',
+  },
+  {
+    field: 'i_deg',
+    headerName: 'Inclination (deg)',
+    valueParser: (params) => Number(params.newValue),
+    filter: 'agNumberColumnFilter',
+  },
+  {
+    field: 'pha',
+    headerName: 'Potentially Hazardous',
+    filter: 'agTextColumnFilter',
+  },
+  {
+    field: 'orbit_class',
+    headerName: 'Orbit Class',
+    enableRowGroup: true,
+    filter: 'agTextColumnFilter',
+  },
 ];
 
 const NeoGrid = (): JSX.Element => {
@@ -25,6 +72,11 @@ const NeoGrid = (): JSX.Element => {
         rowData={data}
         columnDefs={columnDefs}
         rowGroupPanelShow={'always'}
+        defaultColDef={{
+          sortable: true,
+          sort: 'asc',
+          filter: true,
+        }}
       />
     </div>
   );
