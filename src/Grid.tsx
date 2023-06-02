@@ -88,6 +88,8 @@ const NeoGrid = (): JSX.Element => {
         rowData={data}
         columnDefs={columnDefs}
         rowGroupPanelShow={'always'}
+        enableRangeSelection={true}
+        copyHeadersToClipboard={true}
         defaultColDef={{
           sortable: true,
           sort: 'asc',
